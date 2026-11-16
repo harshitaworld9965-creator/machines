@@ -1,0 +1,694 @@
+/* ───────── shared exhibit layer ───────── */
+.exhibit {
+  --text: var(--paper);
+  --dim: var(--paper-dim);
+  color: var(--text);
+}
+.exhibit .cls {
+  color: var(--dim);
+}
+.exhibit .cls-status {
+  color: var(--accent);
+}
+.x-cls,
+.x-name,
+.x-statement,
+.x-secondary,
+.x-controls {
+  visibility: hidden;
+}
+.x-name {
+  position: absolute;
+  font-size: clamp(5rem, 20vw, 26rem);
+  line-height: 0.8;
+  white-space: nowrap;
+}
+.x-statement {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  top: 24vh;
+  width: min(30vw, 32rem);
+}
+.x-device {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+.x-statement p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.9rem);
+  line-height: 1.08;
+}
+.x-secondary {
+  position: absolute;
+  margin: 0;
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.5vw, 1.5rem);
+}
+.x-controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.x-controls > * {
+  pointer-events: auto;
+}
+.ctl-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.choice-legend {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--dim);
+}
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.choice-n {
+  opacity: 0.55;
+}
+.hint {
+  font-family: var(--font-mono);
+  font-size: var(--mono-size);
+  letter-spacing: var(--mono-track);
+  text-transform: uppercase;
+  color: var(--dim);
+  transition: opacity 0.8s var(--ease-out);
+}
+.hint.is-gone {
+  opacity: 0;
+}
+
+/* light rooms draw in ink */
+.ch-aurelius,
+.ch-nova,
+.ch-toad,
+.ch-hush {
+  --text: var(--ink);
+  --dim: rgba(20, 17, 15, 0.66);
+}
+.ch-aurelius .pill-quiet,
+.ch-nova .pill-quiet,
+.ch-toad .pill-quiet,
+.ch-hush .pill-quiet {
+  border-color: rgba(20, 17, 15, 0.3);
+}
+.ch-aurelius .pill:hover,
+.ch-nova .pill:hover,
+.ch-toad .pill:hover,
+.ch-hush .pill:hover {
+  background: rgba(20, 17, 15, 0.07);
+}
+.ch-aurelius :focus-visible,
+.ch-nova :focus-visible,
+.ch-toad :focus-visible,
+.ch-hush :focus-visible {
+  outline-color: var(--ink);
+}
+
+/* ───────── 002 AURELIUS: catalogue plate ───────── */
+.ch-aurelius {
+  --accent: #8a6a2e;
+  --on-accent: var(--paper);
+}
+.ch-aurelius .x-name {
+  left: calc(var(--edge) - 1vw);
+  bottom: -1vh;
+  font-size: clamp(5rem, 19vw, 26rem);
+}
+.ch-aurelius .x-secondary {
+  left: var(--edge);
+  top: calc(var(--topbar) + 12vh);
+  max-width: 24rem;
+}
+.lid-control {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  bottom: 7vh;
+  display: grid;
+  gap: 12px;
+  width: min(360px, 80vw);
+}
+.lid-control input[type='range'] {
+  width: 100%;
+  accent-color: #8a6a2e;
+  height: 32px;
+}
+.inspect-panel {
+  position: absolute;
+  left: var(--edge);
+  top: 30vh;
+  width: min(340px, 80vw);
+  padding: 20px 22px;
+  background: rgba(239, 232, 220, 0.86);
+  color: var(--ink);
+  border: 1px solid rgba(20, 17, 15, 0.2);
+  pointer-events: auto;
+}
+.inspect-panel ol {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.inspect-panel li {
+  display: grid;
+  gap: 2px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+.inspect-panel li .mono {
+  color: #8a6a2e;
+}
+.inspect-note {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* ───────── 003 ATLAS: a drawing set ───────── */
+.ch-atlas {
+  --accent: #f26b21;
+  --on-accent: var(--ink);
+}
+.ch-atlas .x-name {
+  left: calc(var(--edge) - 1.2vw);
+  top: calc(var(--topbar) + 6vh);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: clamp(5rem, 15vh + 4vw, 22rem);
+  color: #f26b21;
+}
+.ch-atlas .x-statement {
+  top: 20vh;
+}
+.ch-atlas .x-secondary {
+  right: calc(var(--edge) + 3vw);
+  top: 52vh;
+  width: min(30vw, 30rem);
+  color: #cfe0ff;
+}
+.atlas-coords {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  top: calc(var(--topbar) + 14px);
+  margin: 0;
+  color: rgba(207, 224, 255, 0.6);
+}
+.build-mode {
+  position: absolute;
+  left: 50%;
+  bottom: 5vh;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: rgba(20, 38, 63, 0.72);
+  border: 1px solid rgba(207, 224, 255, 0.22);
+}
+.build-title {
+  margin: 0;
+  color: #cfe0ff;
+}
+
+/* ───────── 004 NOVA: open sky ───────── */
+.ch-nova {
+  --accent: #2b3fd6;
+  --on-accent: var(--paper);
+}
+.ch-nova .x-name {
+  left: 0;
+  right: 0;
+  top: calc(var(--topbar) + 5vh);
+  text-align: center;
+  font-size: clamp(5rem, 17vw, 24rem);
+  color: #2b3fd6;
+}
+.ch-nova .x-statement {
+  left: var(--edge);
+  right: auto;
+  top: auto;
+  bottom: 9vh;
+}
+.ch-nova .x-secondary {
+  right: calc(var(--edge) + 3vw);
+  top: 30vh;
+  max-width: 20rem;
+}
+.ch-nova .choice {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  bottom: 7vh;
+}
+
+/* ───────── 005 TOAD: a car brochure, played straight ───────── */
+.ch-toad {
+  --accent: #3f7d3a;
+  --on-accent: var(--paper);
+}
+.ch-toad .x-name {
+  left: 0;
+  right: 0;
+  bottom: 5vh;
+  text-align: center;
+  font-size: clamp(6rem, 27vw, 34rem);
+  color: #3f7d3a;
+}
+.ch-toad .x-statement {
+  top: calc(var(--topbar) + 10vh);
+}
+.ch-toad .x-secondary {
+  left: var(--edge);
+  top: calc(var(--topbar) + 12vh);
+  max-width: 22rem;
+}
+.toad-specs {
+  position: absolute;
+  left: var(--edge);
+  top: 34vh;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  visibility: hidden;
+  font-family: var(--font-mono);
+  font-size: var(--mono-size);
+  letter-spacing: var(--mono-track);
+  text-transform: uppercase;
+}
+.toad-specs li {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  min-width: 300px;
+  border-bottom: 1px solid rgba(20, 17, 15, 0.2);
+  padding: 6px 0;
+}
+.toad-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  --accent: #3f7d3a;
+  --on-accent: var(--paper);
+  --dim: rgba(20, 17, 15, 0.66);
+  color: var(--ink);
+}
+.toad-layer canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+  cursor: none;
+  pointer-events: auto;
+}
+.toad-play canvas:focus-visible {
+  outline: 2px dashed #3f7d3a;
+  outline-offset: -6px;
+}
+.toad-tools {
+  position: absolute;
+  left: var(--edge);
+  bottom: 6vh;
+  display: grid;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+/* ───────── 006 HUSH: almost nothing ───────── */
+.ch-hush {
+  --accent: #14110f;
+  --on-accent: #efe8dc;
+}
+.ch-hush .x-name {
+  left: 0;
+  right: 0;
+  top: calc(var(--topbar) + 9vh);
+  text-align: center;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  letter-spacing: 0.4em;
+}
+.ch-hush .x-statement {
+  left: 0;
+  right: 0;
+  top: auto;
+  bottom: 20vh;
+  width: auto;
+  text-align: center;
+}
+.ch-hush .x-statement p {
+  font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+}
+.ch-hush .x-secondary {
+  left: 0;
+  right: 0;
+  top: calc(var(--topbar) + 17vh);
+  text-align: center;
+}
+.nc-control {
+  position: absolute;
+  left: 50%;
+  bottom: 7vh;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+/* ───────── 007 MOXIE: the instrument panel ───────── */
+.ch-moxie {
+  --accent: #f5c400;
+  --on-accent: #0e0e0e;
+}
+.ch-moxie .x-name {
+  right: calc(var(--edge) + 2vw);
+  bottom: -1vh;
+  font-size: clamp(5rem, 19vw, 26rem);
+  color: #f5c400;
+}
+.ch-moxie .x-statement {
+  left: var(--edge);
+  right: auto;
+  top: 24vh;
+}
+.ch-moxie .x-secondary {
+  left: var(--edge);
+  top: 46vh;
+  max-width: 24rem;
+}
+.moxie-controls {
+  position: absolute;
+  left: var(--edge);
+  bottom: 6vh;
+  display: grid;
+  gap: 14px;
+}
+.moxie-says {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  top: calc(var(--topbar) + 14vh);
+  max-width: 22rem;
+  margin: 0;
+  padding: 18px 20px;
+  background: #f5c400;
+  color: #0e0e0e;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  line-height: 1.1;
+  animation: says 0.5s var(--ease-out);
+}
+.moxie-says .mono {
+  display: block;
+  margin-bottom: 8px;
+}
+@keyframes says {
+  from {
+    transform: translateY(10px) scale(0.96);
+    opacity: 0;
+  }
+}
+
+/* ───────── 008 ELSEWHERE: a title sequence ───────── */
+.ch-elsewhere {
+  --accent: #f4f7ff;
+  --on-accent: #1c0508;
+}
+.ch-elsewhere .x-name {
+  left: 0;
+  right: 0;
+  top: 40vh;
+  text-align: center;
+  font-size: clamp(3rem, 10vw, 13rem);
+  text-shadow: 0 0 40px rgba(244, 247, 255, 0.35);
+}
+.ch-elsewhere .x-statement {
+  left: 0;
+  right: 0;
+  top: auto;
+  bottom: 16vh;
+  width: auto;
+  text-align: center;
+}
+.ch-elsewhere .x-secondary {
+  left: 0;
+  right: 0;
+  top: calc(var(--topbar) + 10vh);
+  text-align: center;
+}
+.ch-elsewhere .choice {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  bottom: 6vh;
+}
+
+/* ───────── passages ───────── */
+.pa-next {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 46%;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.5em;
+  visibility: hidden;
+  color: var(--ink);
+}
+.passage-hush .pa-next,
+.passage-moxie .pa-next,
+.passage-elsewhere .pa-next {
+  color: var(--paper);
+}
+.passage-aurelius .pa-note,
+.passage-nova .pa-note,
+.passage-toad .pa-note,
+.passage-hush .pa-note {
+  color: var(--ink);
+}
+.passage-atlas .pa-note {
+  color: #f26b21;
+}
+.passage-moxie .pa-note {
+  color: #f5c400;
+}
+
+/* ───────── tablet ───────── */
+@media (max-width: 1024px) {
+  .x-statement {
+    width: 40vw;
+  }
+}
+
+/* ───────── mobile: recomposed ───────── */
+@media (max-width: 720px) {
+  .x-statement,
+  .ch-nova .x-statement,
+  .ch-moxie .x-statement {
+    left: var(--edge);
+    right: var(--edge);
+    top: calc(var(--topbar) + 84px);
+    bottom: auto;
+    width: auto;
+  }
+  .x-statement p {
+    font-size: 6.4vw;
+  }
+  .x-secondary,
+  .ch-aurelius .x-secondary,
+  .ch-atlas .x-secondary,
+  .ch-nova .x-secondary,
+  .ch-moxie .x-secondary,
+  .ch-toad .x-secondary {
+    left: var(--edge);
+    right: var(--edge);
+    top: auto;
+    bottom: 30vh;
+    width: auto;
+    max-width: none;
+  }
+  .x-name {
+    font-size: 21vw;
+  }
+  .ch-aurelius .x-name,
+  .ch-moxie .x-name {
+    left: var(--edge);
+    right: auto;
+    bottom: 22vh;
+    font-size: 19vw;
+  }
+  .ch-atlas .x-name {
+    font-size: 22vw;
+  }
+  .ch-toad .x-name {
+    bottom: 22vh;
+    font-size: 26vw;
+  }
+  .ch-hush .x-name {
+    font-size: 8vw;
+  }
+  .ch-elsewhere .x-name {
+    font-size: 13vw;
+  }
+  .ch-elsewhere .x-statement {
+    top: calc(var(--topbar) + 84px);
+    bottom: auto;
+  }
+  .lid-control,
+  .build-mode,
+  .nc-control,
+  .moxie-controls,
+  .toad-tools,
+  .ch-nova .choice,
+  .ch-elsewhere .choice {
+    left: var(--edge);
+    right: var(--edge);
+    bottom: 3vh;
+    width: auto;
+    transform: none;
+  }
+  .build-mode .pill,
+  .ch-nova .choice .pill,
+  .ch-elsewhere .choice .pill {
+    padding: 0 12px;
+  }
+  .inspect-panel {
+    top: auto;
+    bottom: 26vh;
+    left: var(--edge);
+    right: var(--edge);
+    width: auto;
+  }
+  .moxie-says {
+    left: var(--edge);
+    right: var(--edge);
+    top: calc(var(--topbar) + 60px);
+  }
+  .toad-specs {
+    top: auto;
+    bottom: 38vh;
+    right: var(--edge);
+  }
+  .toad-specs li {
+    min-width: 0;
+  }
+  .atlas-coords {
+    display: none;
+  }
+}
+
+/* ───────── FINALE ───────── */
+.finale {
+  color: var(--paper);
+}
+.fi-statement {
+  position: absolute;
+  left: var(--edge);
+  right: var(--edge);
+  top: 26vh;
+  text-align: center;
+}
+.fi-title {
+  display: grid;
+  gap: 0.1em;
+  margin: 0;
+  font-size: clamp(2.4rem, 7vw, 8.4rem);
+  line-height: 0.92;
+}
+.fi-b {
+  color: var(--vesper-accent);
+}
+.fi-sub,
+.fi-index,
+.fi-end {
+  visibility: hidden;
+}
+.fi-sub {
+  max-width: 34rem;
+  margin: 32px auto 0;
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+}
+.fi-index {
+  position: absolute;
+  left: var(--edge);
+  right: var(--edge);
+  bottom: 6vh;
+  pointer-events: auto;
+}
+.fi-index .mono {
+  color: var(--paper-dim);
+}
+.fi-index ol {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--paper-faint);
+}
+.fi-index button {
+  width: 100%;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: 10px;
+  padding: 12px 8px 10px;
+  border-bottom: 1px solid var(--paper-faint);
+  text-align: left;
+  transition: background 0.4s var(--ease-out);
+}
+.fi-index button:hover,
+.fi-index button:focus-visible {
+  background: rgba(239, 232, 220, 0.06);
+}
+.fi-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fi-name::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--swatch);
+}
+.fi-theme {
+  grid-column: 2;
+}
+.fi-end {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12vh;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  color: var(--paper-dim);
+  pointer-events: auto;
+}
+@media (max-width: 720px) {
+  .fi-index ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .fi-statement {
+    top: 22vh;
+  }
+}
+
+.toad-layer[data-phase='mute'] .toad-tools {
+  display: none;
+}
+.toad-layer[data-phase='mute'] canvas {
+  pointer-events: none;
+}

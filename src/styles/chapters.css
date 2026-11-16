@@ -1,0 +1,503 @@
+/* ───────── PROLOGUE ───────── */
+.pro-title {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  pointer-events: none;
+}
+.layer {
+  position: absolute;
+  display: block;
+  line-height: 0.84;
+  white-space: nowrap;
+  will-change: transform, opacity;
+}
+.l1 {
+  top: 17vh;
+  left: var(--edge);
+  font-size: clamp(3.2rem, 11vw, 14rem);
+  transform-origin: 0 0;
+}
+.l2 {
+  top: 37vh;
+  right: calc(var(--edge) + 3vw);
+  font-size: clamp(3.2rem, 11vw, 14rem);
+}
+.l3 {
+  bottom: 3vh;
+  left: calc(var(--edge) - 0.6vw);
+  font-size: clamp(8rem, 31vw, 40rem);
+  line-height: 0.76;
+  color: var(--vesper-accent);
+  transform-origin: 30% 60%;
+}
+.pro-sub {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  bottom: 15vh;
+  max-width: 21rem;
+  margin: 0;
+  font-style: italic;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  line-height: 1.4;
+  color: var(--paper);
+}
+.pro-cue {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  bottom: 6vh;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--mono-size);
+  letter-spacing: var(--mono-track);
+  text-transform: uppercase;
+  color: var(--paper-dim);
+}
+.cue-line {
+  position: relative;
+  width: 56px;
+  height: 1px;
+  background: var(--paper-faint);
+  overflow: hidden;
+}
+.cue-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  animation: cue 2.4s var(--ease-out) infinite;
+}
+@keyframes cue {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+.pro-select {
+  position: absolute;
+  left: var(--edge);
+  bottom: 12vh;
+  display: grid;
+  gap: 14px;
+  max-width: 44rem;
+  visibility: hidden;
+}
+.pro-select .mono {
+  color: var(--vesper-accent);
+}
+.pro-select-line {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.6vw, 3.6rem);
+  line-height: 1.05;
+}
+
+/* ───────── VESPER ───────── */
+.v-cls,
+.v-card,
+.v-annot,
+.v-statement,
+.v-secondary,
+.v-controls {
+  visibility: hidden;
+}
+.v-card {
+  position: absolute;
+  left: var(--edge);
+  bottom: 9vh;
+  display: grid;
+  gap: 12px;
+  color: var(--paper);
+}
+.v-card .mono {
+  color: var(--vesper-accent);
+}
+.v-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.6vw, 5rem);
+  line-height: 1;
+}
+.v-annot {
+  position: absolute;
+  left: calc(50% + 7vw);
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--paper-dim);
+}
+.v-annot-line {
+  width: 10vw;
+  height: 1px;
+  background: var(--vesper-accent);
+  transform-origin: 0 50%;
+}
+.v-name {
+  position: absolute;
+  left: calc(var(--edge) - 1.2vw);
+  bottom: -1.5vh;
+  font-size: clamp(6rem, 23vw, 30rem);
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.v-statement {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  top: 24vh;
+  width: min(30vw, 34rem);
+}
+.v-device {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--vesper-accent);
+}
+.v-statement p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.6vw, 3rem);
+  line-height: 1.08;
+}
+.v-secondary {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--topbar) + 9vh);
+  margin: 0;
+  text-align: center;
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+  color: var(--paper);
+}
+.v-controls {
+  position: absolute;
+  inset: 0;
+}
+.drag-zone {
+  position: absolute;
+  left: 30vw;
+  right: 30vw;
+  top: 20vh;
+  bottom: 20vh;
+  cursor: grab;
+  touch-action: pan-y;
+  border-radius: 24px;
+}
+.drag-zone.is-dragging {
+  cursor: grabbing;
+}
+.drag-zone:focus-visible {
+  outline: 1px dashed var(--vesper-accent);
+}
+.drag-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  white-space: nowrap;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(20, 17, 15, 0.55);
+  font-family: var(--font-mono);
+  font-size: var(--mono-size);
+  letter-spacing: var(--mono-track);
+  text-transform: uppercase;
+  color: var(--paper);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.drag-hint-arrows {
+  color: var(--vesper-accent);
+}
+.drag-hint.is-gone {
+  opacity: 0;
+  transform: translate(-50%, 8px);
+}
+.v-buttons {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  bottom: 6vh;
+  display: flex;
+  gap: 10px;
+}
+
+/* ───────── PASSAGE ───────── */
+.veil {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.pa-note {
+  position: absolute;
+  left: var(--edge);
+  bottom: 10vh;
+  margin: 0;
+  color: var(--vesper-accent);
+  visibility: hidden;
+}
+.pa-era {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  margin: 0;
+  text-align: center;
+  color: var(--ink);
+  letter-spacing: 0.5em;
+  visibility: hidden;
+}
+
+/* ───────── AURELIUS (arrival room) ───────── */
+.aurelius {
+  color: var(--ink);
+}
+.aurelius .cls {
+  color: rgba(20, 17, 15, 0.7);
+}
+.aurelius .cls-status {
+  color: #6e5427;
+}
+.a-cls,
+.a-statement,
+.a-secondary,
+.a-end {
+  visibility: hidden;
+}
+.a-name {
+  position: absolute;
+  left: calc(var(--edge) - 1vw);
+  bottom: -1vh;
+  font-size: clamp(5rem, 19vw, 26rem);
+  line-height: 0.8;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.a-statement {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  top: 24vh;
+  width: min(30vw, 32rem);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2.8rem);
+  line-height: 1.1;
+}
+.a-secondary {
+  position: absolute;
+  right: calc(var(--edge) + 3vw);
+  top: 48vh;
+  width: min(30vw, 32rem);
+  margin: 0;
+  font-style: italic;
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
+}
+.a-end {
+  position: absolute;
+  left: var(--edge);
+  top: calc(var(--topbar) + 14vh);
+  max-width: 34rem;
+  display: grid;
+  gap: 18px;
+}
+.a-end p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  line-height: 1.12;
+}
+.a-end-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.aurelius .pill-quiet {
+  border-color: rgba(20, 17, 15, 0.3);
+}
+.aurelius .pill:hover {
+  background: rgba(20, 17, 15, 0.08);
+}
+
+/* ───────── TABLET ───────── */
+@media (max-width: 1024px) {
+  .pro-sub {
+    bottom: 34vh;
+  }
+  .v-statement {
+    top: 16vh;
+  }
+  .v-statement,
+  .a-statement,
+  .a-secondary {
+    width: 40vw;
+  }
+  .drag-zone {
+    left: 22vw;
+    right: 22vw;
+  }
+}
+
+/* ───────── MOBILE: recomposed, not shrunk ───────── */
+@media (max-width: 720px) {
+  .l1 {
+    top: 21vh;
+    font-size: 11.6vw;
+  }
+  .l2 {
+    top: 31vh;
+    right: var(--edge);
+    font-size: 11.6vw;
+  }
+  .l3 {
+    bottom: 22vh;
+    font-size: 52vw;
+  }
+  .pro-sub {
+    left: var(--edge);
+    right: var(--edge);
+    bottom: 11vh;
+    max-width: none;
+  }
+  .pro-cue {
+    left: var(--edge);
+    right: auto;
+    bottom: 5vh;
+  }
+  .pro-select {
+    right: var(--edge);
+  }
+  .v-card {
+    bottom: 14vh;
+    right: var(--edge);
+  }
+  .v-card-title {
+    font-size: 9vw;
+  }
+  .v-annot {
+    left: var(--edge);
+    right: var(--edge);
+    top: auto;
+    bottom: 28vh;
+  }
+  .v-annot-line {
+    width: 8vw;
+  }
+  .v-name {
+    bottom: 14vh;
+    font-size: 25vw;
+  }
+  .v-statement {
+    left: var(--edge);
+    right: var(--edge);
+    top: calc(var(--topbar) + 84px);
+    width: auto;
+  }
+  .v-device {
+    margin-bottom: 8px;
+  }
+  .v-statement p {
+    font-size: 6.4vw;
+  }
+  .v-secondary {
+    top: calc(var(--topbar) + 12vh);
+    padding: 0 var(--edge);
+  }
+  .drag-zone {
+    left: 8vw;
+    right: 8vw;
+    top: 22vh;
+    bottom: 26vh;
+  }
+  .v-buttons {
+    left: var(--edge);
+    right: var(--edge);
+    bottom: 4vh;
+    justify-content: center;
+  }
+  .a-name {
+    bottom: 12vh;
+    font-size: 21vw;
+  }
+  .a-statement,
+  .a-secondary {
+    left: var(--edge);
+    right: var(--edge);
+    width: auto;
+  }
+  .a-statement {
+    top: auto;
+    bottom: 34vh;
+    font-size: 7vw;
+  }
+  .a-secondary {
+    top: auto;
+    bottom: 27vh;
+  }
+  .a-end {
+    right: var(--edge);
+    top: calc(var(--topbar) + 8vh);
+  }
+}
+
+/* ───────── STATIC (reduced motion / no WebGL) ───────── */
+.static {
+  position: relative;
+  z-index: 1;
+}
+.plate {
+  background: var(--room);
+  padding: calc(var(--topbar) + 20px) var(--edge) 12vh;
+}
+.plate img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.25);
+}
+.plate-copy {
+  display: grid;
+  gap: 14px;
+  max-width: 54rem;
+  margin-top: 36px;
+}
+.plate-title {
+  font-size: clamp(3rem, 9vw, 9rem);
+  line-height: 0.9;
+}
+.plate-name {
+  font-size: clamp(4rem, 14vw, 14rem);
+  line-height: 0.85;
+}
+.plate-lead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2.6rem);
+  line-height: 1.1;
+}
+.plate-note {
+  color: var(--paper-dim);
+}
+.plate-secondary {
+  padding-top: 0;
+}
+.plate-light {
+  color: var(--ink);
+}
+.plate-light .plate-note {
+  color: rgba(20, 17, 15, 0.7);
+}
+.plate-list {
+  padding: 10vh var(--edge) 16vh;
+}
+.plate-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: grid;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 3rem);
+}

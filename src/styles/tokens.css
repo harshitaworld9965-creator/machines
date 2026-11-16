@@ -1,0 +1,26 @@
+:root {
+  /* shared base: every room is built on these two */
+  --ink: #14110f;
+  --paper: #efe8dc;
+  --paper-dim: rgba(239, 232, 220, 0.62);
+  --paper-faint: rgba(239, 232, 220, 0.18);
+
+  /* rooms (mirrors src/data/exhibits.js) */
+  --vesper-room: #2a1b2e;
+  --vesper-accent: #e7a7a0;
+  --aurelius-room: #8c8780;
+  --aurelius-accent: #b08d4c;
+
+  /* type */
+  --font-display: 'Gloock', 'Times New Roman', serif;
+  --font-text: 'Hanken Grotesk', system-ui, sans-serif;
+  --font-mono: 'Martian Mono', ui-monospace, monospace;
+
+  --mono-size: clamp(10px, 0.72vw, 12px);
+  --mono-track: 0.14em;
+
+  /* layout */
+  --edge: clamp(20px, 5vw, 88px);
+  --topbar: 64px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

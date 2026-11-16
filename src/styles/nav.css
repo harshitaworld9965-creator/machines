@@ -1,0 +1,234 @@
+.topbar {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--edge);
+  color: var(--paper);
+  transition: color 0.6s var(--ease-out);
+}
+.tone-light .topbar,
+.tone-light .rail {
+  color: var(--ink);
+}
+.wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 44px;
+}
+.wordmark .mono {
+  font-family: var(--font-mono);
+  font-size: var(--mono-size);
+  letter-spacing: var(--mono-track);
+  opacity: 0.6;
+}
+.wordmark-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+.topbar-actions {
+  display: flex;
+  gap: 18px;
+}
+
+/* the rail: one hairline, nine ticks */
+.rail {
+  position: fixed;
+  z-index: 20;
+  right: calc(var(--edge) * 0.4);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  color: var(--paper);
+}
+.rail ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.tick {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 44px;
+  height: 22px;
+}
+.tick-mark {
+  display: block;
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+  transition: width 0.5s var(--ease-out), opacity 0.5s var(--ease-out);
+}
+.tick:hover .tick-mark {
+  width: 22px;
+  opacity: 1;
+}
+.tick.is-current .tick-mark {
+  width: 36px;
+  opacity: 1;
+  background: var(--vesper-accent);
+}
+.tone-light .tick.is-current .tick-mark {
+  background: var(--aurelius-accent);
+}
+.tick.is-planned {
+  cursor: not-allowed;
+}
+.tick.is-planned .tick-mark {
+  opacity: 0.2;
+}
+.rail-label {
+  margin: 6px 0 0;
+  writing-mode: vertical-rl;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+.rail-label .mono {
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+
+/* index */
+.index-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(20, 17, 15, 0.7);
+  animation: fade 0.4s var(--ease-out);
+}
+.index {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(680px, 100%);
+  overflow-y: auto;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 22px var(--edge) 48px clamp(24px, 4vw, 56px);
+  animation: slide 0.6s var(--ease-out);
+}
+.index :focus-visible {
+  outline-color: var(--ink);
+}
+.index-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(20, 17, 15, 0.2);
+}
+.index-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3.4rem 1fr;
+  align-items: baseline;
+  column-gap: 12px;
+  padding: 16px 0 14px;
+  border-bottom: 1px solid rgba(20, 17, 15, 0.2);
+  text-align: left;
+  transition: padding 0.4s var(--ease-out);
+}
+.index-row:not(:disabled):hover {
+  padding-left: 10px;
+}
+.index-row:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+.index-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.index-name::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: var(--swatch, transparent);
+  border: 1px solid rgba(20, 17, 15, 0.25);
+}
+.index-row.is-current .index-name {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 8px;
+}
+.index-meta {
+  grid-column: 2;
+  margin-top: 6px;
+  opacity: 0.7;
+}
+@keyframes fade {
+  from { opacity: 0; }
+}
+@keyframes slide {
+  from { transform: translateX(40px); opacity: 0; }
+}
+
+@media (max-width: 720px) {
+  .wordmark-name {
+    display: none;
+  }
+  .rail {
+    top: calc(var(--topbar) - 6px);
+    right: auto;
+    left: var(--edge);
+    transform: none;
+    flex-direction: row;
+    align-items: center;
+  }
+  .rail ol {
+    display: flex;
+    gap: 0;
+  }
+  .tick {
+    width: 24px;
+    height: 32px;
+    justify-content: center;
+  }
+  .tick-mark {
+    width: 1px;
+    height: 10px;
+  }
+  .tick:hover .tick-mark {
+    width: 1px;
+    height: 14px;
+  }
+  .tick.is-current .tick-mark {
+    width: 2px;
+    height: 18px;
+  }
+  .rail-label {
+    writing-mode: horizontal-tb;
+    margin: 0 0 0 10px;
+    font-size: 0.85rem;
+  }
+  .rail-label .mono {
+    margin: 0 8px 0 0;
+  }
+  .cls {
+    top: calc(var(--topbar) + 34px);
+  }
+}

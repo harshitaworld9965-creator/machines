@@ -1,0 +1,221 @@
+{
+  "note": "Every device visual in this build is a PROVISIONAL placeholder. Nothing here has been verified against the owner's actual devices.",
+  "assets": [
+    {
+      "id": "vesper-body",
+      "exhibit": "001",
+      "source": "Procedural geometry (src/chapters/vesper/Phone.jsx)",
+      "format": "Runtime Three.js mesh",
+      "dimensions": "Proportions from the public S22 Ultra outline, 163.3 x 77.9 x 8.9 mm",
+      "intendedUse": "Prologue silhouette, Vesper rotation and orbit",
+      "fidelity": "provisional",
+      "verified": [],
+      "unverified": [
+        "colour",
+        "case",
+        "S Pen",
+        "exact corner radius",
+        "button placement",
+        "camera ring finish"
+      ],
+      "replaceWith": "glTF model (Draco, under 1.5 MB) checked against owner photos",
+      "priority": "P0"
+    },
+    {
+      "id": "vesper-camera-cluster",
+      "exhibit": "001",
+      "source": "Procedural; layout follows public reviews: four individually raised lenses, laser AF window, flush flash, no camera island",
+      "format": "Runtime Three.js mesh",
+      "dimensions": "Approximate",
+      "intendedUse": "Opening macro shot",
+      "fidelity": "provisional",
+      "verified": [],
+      "unverified": [
+        "exact lens positions",
+        "ring colour",
+        "flash and laser AF placement"
+      ],
+      "replaceWith": "Owner macro photograph or verified model",
+      "priority": "P0"
+    },
+    {
+      "id": "vesper-screen",
+      "exhibit": "001",
+      "source": "Procedural canvas texture, original abstract artwork",
+      "format": "CanvasTexture 512 x 1080",
+      "dimensions": "512 x 1080",
+      "intendedUse": "Screen glow when the phone turns",
+      "fidelity": "original artwork (not a device representation)",
+      "priority": "P0"
+    },
+    {
+      "id": "memory-fragments",
+      "exhibit": "001",
+      "source": "Procedural canvas textures: abstract skies, waveforms, grids, plans. No real photos or conversations.",
+      "format": "8 CanvasTextures 256 x 192",
+      "dimensions": "256 x 192",
+      "intendedUse": "Memory archive and Memory Orbit",
+      "fidelity": "original artwork",
+      "priority": "P0"
+    },
+    {
+      "id": "prologue-silhouettes",
+      "exhibit": "000",
+      "source": "Procedural primitives, deliberately unidentified",
+      "format": "Runtime Three.js meshes",
+      "intendedUse": "Eight unidentified artifacts in the prologue",
+      "fidelity": "abstract by design",
+      "priority": "P0"
+    },
+    {
+      "id": "aurelius-body",
+      "exhibit": "002",
+      "source": "Procedural laptop with hinged lid (src/devices/Placeholders.jsx, Laptop), no logo",
+      "format": "Runtime Three.js mesh",
+      "intendedUse": "Lid opening, inspection mode, suspension",
+      "fidelity": "provisional",
+      "verified": [],
+      "unverified": [
+        "model and year",
+        "colour",
+        "logo style",
+        "proportions",
+        "hinge",
+        "keyboard layout",
+        "ports"
+      ],
+      "replaceWith": "glTF with separate lid on a hinge pivot",
+      "priority": "P1"
+    },
+    {
+      "id": "atlas-body",
+      "exhibit": "003",
+      "source": "Procedural laptop (Laptop, silver), no logo",
+      "format": "Runtime Three.js mesh",
+      "intendedUse": "Worm's-eye orbit, lid opening",
+      "fidelity": "provisional",
+      "verified": [],
+      "unverified": [
+        "series and model",
+        "colour",
+        "screen size",
+        "proportions",
+        "stickers"
+      ],
+      "replaceWith": "glTF with separate lid",
+      "priority": "P1"
+    },
+    {
+      "id": "nova-body",
+      "exhibit": "004",
+      "source": "Procedural 16:10 slab (Tablet)",
+      "format": "Runtime Three.js mesh",
+      "intendedUse": "Edge-on reveal, screen spill",
+      "fidelity": "provisional",
+      "verified": [],
+      "unverified": [
+        "exact model",
+        "colour",
+        "bezel width",
+        "camera position",
+        "case or stylus"
+      ],
+      "replaceWith": "Procedural box refined from owner photos",
+      "priority": "P2"
+    },
+    {
+      "id": "toad-body",
+      "exhibit": "005",
+      "source": "Procedural pebble with wheel (Mouse)",
+      "format": "Runtime Three.js mesh",
+      "intendedUse": "Supercar turntable shots",
+      "fidelity": "provisional",
+      "verified": [],
+      "unverified": [
+        "brand and model",
+        "colour",
+        "number of buttons",
+        "receiver"
+      ],
+      "replaceWith": "Masked owner photographs (flat chapter) or small glTF",
+      "priority": "P2"
+    },
+    {
+      "id": "hush-body",
+      "exhibit": "006",
+      "source": "Procedural case with lid and two buds (BudsCase)",
+      "format": "Runtime Three.js mesh",
+      "intendedUse": "Product shot, buds emerging",
+      "fidelity": "provisional",
+      "verified": [],
+      "unverified": [
+        "case and bud colour",
+        "case shape",
+        "stem shape"
+      ],
+      "replaceWith": "Image sequence of the case opening, or verified glTF",
+      "priority": "P3"
+    },
+    {
+      "id": "moxie-body",
+      "exhibit": "007",
+      "source": "Procedural round watch with strap (Watch); faces are original canvas drawings",
+      "format": "Runtime Three.js mesh",
+      "intendedUse": "Face close-up, kinetic rings",
+      "fidelity": "provisional",
+      "verified": [],
+      "unverified": [
+        "body and bezel colour",
+        "strap",
+        "crown position",
+        "case size"
+      ],
+      "replaceWith": "glTF body; faces stay original",
+      "priority": "P3"
+    },
+    {
+      "id": "elsewhere-body",
+      "exhibit": "008",
+      "source": "Procedural frame on two feet (Television)",
+      "format": "Runtime Three.js mesh",
+      "intendedUse": "Approach, pass-through",
+      "fidelity": "provisional",
+      "verified": [],
+      "unverified": [
+        "model and screen size",
+        "wall-mounted or stand",
+        "bezel colour"
+      ],
+      "replaceWith": "Procedural frame refined from owner photo",
+      "priority": "P4"
+    },
+    {
+      "id": "channel-worlds",
+      "exhibit": "008",
+      "source": "Original canvas drawings, painted live (Midnight Ocean, Cloud City, Labyrinth)",
+      "format": "CanvasTexture 512 x 288 + 9 layer textures 1024 x 512",
+      "intendedUse": "Channel selector, worlds behind the screen",
+      "fidelity": "original artwork",
+      "priority": "P4"
+    },
+    {
+      "id": "nova-worlds",
+      "exhibit": "004",
+      "source": "Original canvas drawings + procedural geometry (Tide, Orchard, Glass City)",
+      "format": "CanvasTexture 640 x 400 + instanced meshes",
+      "intendedUse": "World picker",
+      "fidelity": "original artwork",
+      "priority": "P2"
+    },
+    {
+      "id": "posters",
+      "exhibit": "all",
+      "source": "Screenshots of this build with the type hidden",
+      "format": "WebP",
+      "dimensions": "1600 x 1000",
+      "intendedUse": "Reduced-motion and no-WebGL fallbacks",
+      "fidelity": "matches build",
+      "priority": "Only loaded in fallback mode"
+    }
+  ]
+}
